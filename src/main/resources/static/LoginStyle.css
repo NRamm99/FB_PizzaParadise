@@ -1,0 +1,59 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #000;
+}
+
+.title {
+    font-size: 36px;
+    text-align: center;
+    color: whitesmoke;
+
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 30%;
+
+    border-radius: 30px;
+    background-color: rgba(53, 53, 53, 0.94);
+}
+
+.loginbtn {
+    background-color: #0f94e8;
+    color: white;
+    font-size: 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.label {
+    font-size: 20px;
+    font-weight: bold;
+
+    color: whitesmoke;
+}
+
+.field {
+    width: 60%;
+    padding: 10px 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+
