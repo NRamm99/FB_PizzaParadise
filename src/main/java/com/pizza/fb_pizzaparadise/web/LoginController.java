@@ -1,7 +1,7 @@
-package com.pizza.fb_pizzaparadise.controller;
+package com.pizza.fb_pizzaparadise.web;
 
-import com.pizza.fb_pizzaparadise.model.User;
-import com.pizza.fb_pizzaparadise.service.UserService;
+import com.pizza.fb_pizzaparadise.domain.model.User;
+import com.pizza.fb_pizzaparadise.application.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,15 +15,20 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/index")
+    public String index(Model model) {
+        return "index";
+    }
+
     @GetMapping("/")
     public String landingPage() {
-        return "redirect:login";
+        return "index";
     }
 
     @GetMapping("/login")
     public String loginPage(Model model) {
         model.addAttribute("user", new User());
-        return "login";
+        return "Pizzas/login";
     }
 
     @PostMapping("/login")
@@ -31,7 +36,12 @@ public class LoginController {
         model.addAttribute("user", user);
         // TEMP
         userService.createUser(user);
-        return "dashboard";
+        return "Pizzas/dashboard";
     }
 
+    @GetMapping("/register")
+    public String registerPage(Model model) {
+        model.addAttribute("user", new User());
+        return "Pizzas/register";
+    }
 }

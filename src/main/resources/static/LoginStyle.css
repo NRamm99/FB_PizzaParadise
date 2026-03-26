@@ -57,4 +57,18 @@ body {
     transition: all 0.2s ease;
 }
 
+.goback-button {
+    background-color: #0f94e8;
+    color: white;
+    font-size: 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
 

@@ -1,7 +1,7 @@
-package com.pizza.fb_pizzaparadise.service;
+package com.pizza.fb_pizzaparadise.application;
 
-import com.pizza.fb_pizzaparadise.model.Pizza;
-import com.pizza.fb_pizzaparadise.model.PizzaTopping;
+import com.pizza.fb_pizzaparadise.domain.model.Pizza;
+import com.pizza.fb_pizzaparadise.domain.types.PizzaTopping;
 
 import java.util.ArrayList;
 import java.util.List;

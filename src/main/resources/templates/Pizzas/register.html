@@ -7,8 +7,8 @@
 </head>
 <body>
 
-<form class="login-form" th:action="@{/login}" th:object="${user}" method="post">
-    <h1 class="title">Login</h1>
+<form class="login-form" th:action="@{/register}" th:object="${user}" method="post">
+    <h1 class="title">Register</h1>
 
     <p class="label">E-mail</p>
     <input class="field" type="email" th:field="*{email}"/>
@@ -17,6 +17,12 @@
     <input class="field" type="password" th:field="*{password}"/>
 
     <button class="loginbtn" type="submit">Login</button>
+
+    <a th:href="@{/index}">
+        <button type="button"
+                class="goback-button">go back
+        </button>
+    </a>
 </form>
 </body>
 </html>

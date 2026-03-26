@@ -1,4 +1,4 @@
-package com.pizza.fb_pizzaparadise.model;
+package com.pizza.fb_pizzaparadise.domain.types;
 
 public enum PizzaSauce {
     TOMATO,

@@ -1,4 +1,9 @@
-package com.pizza.fb_pizzaparadise.model;
+package com.pizza.fb_pizzaparadise.domain.model;
+
+import com.pizza.fb_pizzaparadise.domain.types.PizzaCheese;
+import com.pizza.fb_pizzaparadise.domain.types.PizzaCrust;
+import com.pizza.fb_pizzaparadise.domain.types.PizzaSauce;
+import com.pizza.fb_pizzaparadise.domain.types.PizzaTopping;
 
 import java.util.ArrayList;
 import java.util.List;

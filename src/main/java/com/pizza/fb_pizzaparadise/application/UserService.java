@@ -1,6 +1,6 @@
-package com.pizza.fb_pizzaparadise.service;
+package com.pizza.fb_pizzaparadise.application;
 
-import com.pizza.fb_pizzaparadise.model.User;
+import com.pizza.fb_pizzaparadise.domain.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
