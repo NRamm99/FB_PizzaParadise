@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" th:href="@{/LoginStyle.css}">
+    <meta charset="UTF-8">
+    <title>🍕 Ramm's Pizza - Profile</title>
+</head>
+<body>
+
+<div class="top-bar">
+    <h1 class="bar-title">🍕 Ramm's Pizza 🍕</h1>
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="logout-button">Logout</button>
+    </form>
+</div>
+
+<div class="page">
+    <div class="container profile-container">
+        <h1 class="title">Profile</h1>
+
+        <div class="profile-info">
+            <label class="label">Name</label>
+            <p class="profile-value" th:text="${user.name}">John Doe</p>
+
+            <label class="label">E-mail</label>
+            <p class="profile-value" th:text="${user.email}">john@example.com</p>
+
+            <label class="label">Points</label>
+            <p class="profile-value" th:text="${user.points}">250</p>
+
+            <label class="label">Discount</label>
+            <p class="profile-value" th:text="${discount + ' DKK off'}">20 DKK off</p>
+
+            <h2 class="card-title">Favorite Pizzas</h2>
+
+            <div th:if="${#lists.isEmpty(favorites)}">
+                <p class="order-text">No favorite pizzas yet.</p>
+            </div>
+
+            <div class="pizza-card" th:each="pizza : ${favorites}">
+                <h2 class="card-title" th:text="${pizza.name}">Favorite Pizza</h2>
+                <p class="order-text">
+                    Crust: <span th:text="${pizza.crust}"></span>
+                </p>
+                <p class="order-text">
+                    Sauce: <span th:text="${pizza.sauce}"></span>
+                </p>
+                <p class="order-text">
+                    Cheese: <span th:text="${pizza.cheese}"></span>
+                </p>
+                <p class="order-text">
+                    Toppings:
+                    <span th:text="${#lists.isEmpty(pizza.toppings) ? 'None' : #strings.listJoin(pizza.toppings, ', ')}"></span>
+                </p>
+                <p class="menu-price" th:text="${pizza.price + ' DKK'}">80 DKK</p>
+            </div>
+        </div>
+
+        <a th:href="@{/dashboard}">
+            <button type="button" class="goback-button">Go back</button>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

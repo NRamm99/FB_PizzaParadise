@@ -1,13 +1,24 @@
 package com.pizza.fb_pizzaparadise.domain.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderHistory {
-    int id;
-    List<Order> orders;
+    private List<Order> orders;
 
-    public OrderHistory(int id, List<Order> orders) {
-        this.id = id;
+    public OrderHistory() {
+        this.orders = new ArrayList<>();
+    }
+
+    public OrderHistory(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 }

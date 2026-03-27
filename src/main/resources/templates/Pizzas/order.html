@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" th:href="@{/LoginStyle.css}">
+    <meta charset="UTF-8">
+    <title>🍕 Ramm's Pizza - Order</title>
+</head>
+<body>
+
+<div class="top-bar">
+    <h1 class="bar-title">🍕 Ramm's Pizza 🍕</h1>
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="logout-button">Logout</button>
+    </form>
+</div>
+
+<div class="page">
+    <div class="order-layout">
+
+        <!-- MENU -->
+        <div class="order-card">
+            <h1 class="title">Menu</h1>
+
+            <div class="pizza-card" th:each="pizza : ${menu}">
+                <h2 class="card-title" th:text="${pizza.name}">Pizza Name</h2>
+                <p class="order-text">
+                    Crust: <span th:text="${pizza.crust}"></span>
+                </p>
+                <p class="order-text">
+                    Sauce: <span th:text="${pizza.sauce}"></span>
+                </p>
+                <p class="order-text">
+                    Cheese: <span th:text="${pizza.cheese}"></span>
+                </p>
+                <p class="order-text">
+                    Toppings:
+                    <span th:text="${#lists.isEmpty(pizza.toppings) ? 'None' : #strings.listJoin(pizza.toppings, ', ')}"></span>
+                </p>
+                <p class="menu-price" th:text="${pizza.price + ' DKK'}">80 DKK</p>
+
+                <form th:action="@{/order/add/{id}(id=${pizza.id})}" method="post">
+                    <button type="submit" class="small-button">Add to cart</button>
+                </form>
+            </div>
+            <h2 class="card-title">Favorites</h2>
+
+            <div th:if="${#lists.isEmpty(favorites)}">
+                <p class="order-text">No favorite pizzas yet.</p>
+            </div>
+
+            <div class="pizza-card" th:each="pizza, iterStat : ${favorites}">
+                <h2 class="card-title" th:text="${pizza.name}">Favorite Pizza</h2>
+                <p class="order-text">
+                    Crust: <span th:text="${pizza.crust}"></span>
+                </p>
+                <p class="order-text">
+                    Sauce: <span th:text="${pizza.sauce}"></span>
+                </p>
+                <p class="order-text">
+                    Cheese: <span th:text="${pizza.cheese}"></span>
+                </p>
+                <p class="order-text">
+                    Toppings:
+                    <span th:text="${#lists.isEmpty(pizza.toppings) ? 'None' : #strings.listJoin(pizza.toppings, ', ')}"></span>
+                </p>
+                <p class="menu-price" th:text="${pizza.price + ' DKK'}">80 DKK</p>
+
+                <form th:action="@{/order/favorite/{index}(index=${iterStat.index})}" method="post">
+                    <button type="submit" class="small-button">Add to cart</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- CUSTOM PIZZA -->
+        <div class="order-card">
+            <h1 class="title">Custom Pizza</h1>
+
+            <form th:action="@{/order/custom}" method="post" class="custom-form">
+                <label class="label" for="name">Pizza name</label>
+                <input class="field" type="text" id="name" name="name" placeholder="My Pizza">
+
+                <label class="label" for="crust">Crust</label>
+                <select class="field" id="crust" name="crust">
+                    <option th:each="crust : ${crusts}" th:value="${crust}" th:text="${crust}"></option>
+                </select>
+
+                <label class="label" for="sauce">Sauce</label>
+                <select class="field" id="sauce" name="sauce">
+                    <option th:each="sauce : ${sauces}" th:value="${sauce}" th:text="${sauce}"></option>
+                </select>
+
+                <label class="label" for="cheese">Cheese</label>
+                <select class="field" id="cheese" name="cheese">
+                    <option th:each="cheese : ${cheeses}" th:value="${cheese}" th:text="${cheese}"></option>
+                </select>
+
+                <p class="label">Toppings (+10 DKK each)</p>
+                <div class="topping-grid">
+                    <label class="checkbox-label" th:each="topping : ${toppings}">
+                        <input type="checkbox" name="toppings" th:value="${topping}">
+                        <span th:text="${topping}">TOPPING</span>
+                    </label>
+                </div>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" name="favorite" value="true">
+                    <span>Save as favorite</span>
+                </label>
+
+                <button type="submit" class="loginbtn">Add custom pizza</button>
+            </form>
+        </div>
+
+        <div class="order-card">
+            <h1 class="title">Cart</h1>
+
+            <div th:if="${#lists.isEmpty(cart)}">
+                <p class="order-text">Your cart is empty.</p>
+            </div>
+
+            <div th:if="${!#lists.isEmpty(cart)}">
+                <div class="cart-item" th:each="pizza, iterStat : ${cart}">
+                    <h2 class="card-title" th:text="${pizza.name}">Pizza</h2>
+                    <p class="order-text" th:text="${pizza.price + ' DKK'}">80 DKK</p>
+
+                    <p class="order-text">
+                        Toppings:
+                        <span th:text="${#lists.isEmpty(pizza.toppings) ? 'None' : #strings.listJoin(pizza.toppings, ', ')}"></span>
+                    </p>
+
+                    <form th:action="@{/order/remove/{index}(index=${iterStat.index})}" method="post">
+                        <button type="submit" class="small-button danger-button">Remove</button>
+                    </form>
+                </div>
+
+                <p class="points-info"
+                   th:text="'Points: ' + ${user.points} + ' (' + ${availableDiscount} + ' DKK off)'">
+                    Points: 110 (10 DKK off)
+                </p>
+
+                <form th:if="${!discountApplied and availableDiscount > 0}"
+                      th:action="@{/order/apply-discount}"
+                      method="post">
+                    <button type="submit" class="small-button">Apply discount</button>
+                </form>
+
+                <form th:if="${discountApplied}"
+                      th:action="@{/order/remove-discount}"
+                      method="post">
+                    <button type="submit" class="small-button danger-button">Remove discount</button>
+                </form>
+
+                <p class="cart-total" th:text="'Subtotal: ' + ${cartTotal} + ' DKK'">Subtotal: 0 DKK</p>
+                <p class="cart-total" th:if="${discountApplied}" th:text="'Discount: -' + ${appliedDiscount} + ' DKK'">
+                    Discount: -10 DKK
+                </p>
+                <p class="cart-total" th:text="'Total: ' + ${finalTotal} + ' DKK'">Total: 0 DKK</p>
+
+                <form th:action="@{/order/checkout}" method="post">
+                    <button type="submit" class="loginbtn">Order now</button>
+                </form>
+
+                <form th:action="@{/order/clear}" method="post">
+                    <button type="submit" class="small-button danger-button">Clear cart</button>
+                </form>
+
+                <a th:href="@{/dashboard}">
+                    <button type="button" class="goback-button">Go back</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

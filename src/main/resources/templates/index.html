@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" th:href="@{/LoginStyle.css}">
     <meta charset="UTF-8">
-    <title>Ramm's Pizza</title>
+    <title>🍕 Ramm's Pizza</title>
 </head>
 <body>
-
-<div id="container">
-    <h1>Ramm's Pizza</h1>
-    <a th:href="@{/login}">
-        <button type="button">Login</button>
-    </a>
-    <a th:href="@{/register}">
-        <button type="button">Register</button>
-    </a>
+<div class="top-bar">
+    <h1 class="bar-title">🍕 Ramm's Pizza 🍕</h1>
+</div>
+<br>
+<div class="page">
+    <div class="container">
+        <a th:href="@{/login}">
+            <button class="index-button"
+                    type="button">Login
+            </button>
+        </a>
+        <a th:href="@{/register}">
+            <button class="index-button"
+                    type="button">Register
+            </button>
+        </a>
+    </div>
 </div>
 
 </body>

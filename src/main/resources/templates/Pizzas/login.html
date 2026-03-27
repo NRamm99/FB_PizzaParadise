@@ -3,26 +3,34 @@
 <head>
     <link rel="stylesheet" th:href="@{/LoginStyle.css}">
     <meta charset="UTF-8">
-    <title>Ramm's Pizza</title>
+    <title>🍕 Ramm's Pizza</title>
 </head>
 <body>
 
-<form class="login-form" th:action="@{/login}" th:object="${user}" method="post">
-    <h1 class="title">Login</h1>
+<div class="top-bar">
+    <h1 class="bar-title">🍕 Ramm's Pizza 🍕</h1>
+</div>
 
-    <p class="label">E-mail</p>
-    <input class="field" type="email" th:field="*{email}"/>
+<div class="page">
+    <form th:action="@{/login}" method="post" class="login-form">
+        <h1 class="title">Login</h1>
 
-    <p class="label">Password </p>
-    <input class="field" type="password" th:field="*{password}"/>
+        <label class="label" for="username">E-mail</label>
+        <input class="field" id="username" type="email" name="username" required>
 
-    <button class="loginbtn" type="submit">Login</button>
+        <label class="label" for="password">Password</label>
+        <input class="field" id="password" type="password" name="password" required>
 
-    <a th:href="@{/index}">
-        <button type="button"
-                class="goback-button">go back
-        </button>
-    </a>
-</form>
+        <button class="loginbtn" type="submit">Login</button>
+
+        <p th:if="${param.error}" style="color:red;">Invalid email or password</p>
+        <p th:if="${param.logout}" style="color:green;">You have been logged out</p>
+
+        <a th:href="@{/register}">
+            <button type="button" class="goback-button">Go to Register</button>
+        </a>
+    </form>
+</div>
+
 </body>
 </html>

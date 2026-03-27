@@ -3,26 +3,36 @@
 <head>
     <link rel="stylesheet" th:href="@{/LoginStyle.css}">
     <meta charset="UTF-8">
-    <title>Ramm's Pizza</title>
+    <title>🍕 Ramm's Pizza</title>
 </head>
 <body>
 
-<form class="login-form" th:action="@{/register}" th:object="${user}" method="post">
-    <h1 class="title">Register</h1>
+<div class="top-bar">
+    <h1 class="bar-title">🍕 Ramm's Pizza 🍕</h1>
+</div>
 
-    <p class="label">E-mail</p>
-    <input class="field" type="email" th:field="*{email}"/>
+<div class="page">
+    <form class="register-form" th:action="@{/register}" th:object="${user}" method="post">
+        <h1 class="title">Register</h1>
 
-    <p class="label">Password </p>
-    <input class="field" type="password" th:field="*{password}"/>
+        <label class="label" for="name">Name</label>
+        <input class="field" id="name" type="text" th:field="*{name}" required>
 
-    <button class="loginbtn" type="submit">Login</button>
+        <label class="label" for="email">E-mail</label>
+        <input class="field" id="email" type="email" th:field="*{email}" required>
 
-    <a th:href="@{/index}">
-        <button type="button"
-                class="goback-button">go back
-        </button>
-    </a>
-</form>
+        <label class="label" for="password">Password</label>
+        <input class="field" id="password" type="password" th:field="*{password}" required>
+
+        <button class="loginbtn" type="submit">Register</button>
+
+        <p th:if="${error}" th:text="${error}" style="color:red;"></p>
+
+        <a th:href="@{/login}">
+            <button type="button" class="goback-button">Go back</button>
+        </a>
+    </form>
+</div>
+
 </body>
 </html>

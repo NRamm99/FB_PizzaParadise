@@ -1,16 +1,14 @@
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #000;
+    flex-direction: column;
+    margin: 0;
+    background: #ffbf69;
 }
 
 .title {
     font-size: 36px;
     text-align: center;
     color: whitesmoke;
-
 }
 
 .login-form {
@@ -18,29 +16,30 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 20%;
-    height: 30%;
+    width: 400px;
+    height: 450px;
 
     border-radius: 30px;
-    background-color: rgba(53, 53, 53, 0.94);
+    background-color: #ff9f1c;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-.loginbtn {
-    background-color: #0f94e8;
-    color: white;
-    font-size: 15px;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 10px;
+.register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 550px;
+
+    border-radius: 30px;
+    background-color: #ff9f1c;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .label {
     font-size: 20px;
     font-weight: bold;
-
     color: whitesmoke;
 }
 
@@ -57,18 +56,327 @@ body {
     transition: all 0.2s ease;
 }
 
-.goback-button {
-    background-color: #0f94e8;
+.field:focus {
+    border-color: #2ec4b6;
+    box-shadow: 0 0 5px rgba(46, 196, 182, 0.5);
+}
+
+.loginbtn {
+    background-color: #2ec4b6;
     color: white;
     font-size: 15px;
     padding: 12px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+
     margin-top: 20px;
     margin-bottom: 10px;
+
+    width: 60%;
+    transition-duration: 0.4s;
+}
+
+.loginbtn:hover {
+    background-color: #cbf3f0;
+    color: black;
+}
+
+.goback-button {
+    background-color: #2ec4b6;
+    color: white;
+    font-size: 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
     width: 100%;
+    text-align: center;
+
+    transition-duration: 0.4s;
+}
+
+.goback-button:hover {
+    background-color: #cbf3f0;
+    color: black;
+}
+
+.login-form a,
+.register-form a {
+    width: 60%;
+    text-decoration: none;
+}
+
+.top-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #ff9f1c;
+    width: 100%;
+    height: 80px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.bar-title {
+    color: #ffffff;
+    margin: 0;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 80px);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 450px;
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #ff9f1c;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+    justify-content: center;
+    align-items: center;
+}
+
+.index-button {
+    background-color: #2ec4b6;
+    color: white;
+    font-size: 15px;
+    padding: 12px;
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    width: 200px;
+    height: 100px;
+
+    text-align: center;
+    transition-duration: 0.4s;
+}
+
+.index-button:hover {
+    background-color: #cbf3f0;
+    color: black;
+}
+
+.logout-button {
+    background-color: #2ec4b6;
+    color: white;
+    font-size: 15px;
+    padding: 12px;
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    width: 100px;
+    height: 50px;
+
+    text-align: center;
+    font-weight: bold;
+
+    transition-duration: 0.4s;
+
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    margin: 0;
+}
+
+.logout-button:hover {
+    background-color: #cbf3f0;
+    color: black;
+}
+
+.profile-container {
+    width: 400px;
+    height: auto;
+    min-height: 450px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.profile-info {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-value {
+    width: 100%;
+    background-color: whitesmoke;
+    color: #333;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.order-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding: 0 30px 30px 30px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+.order-card {
+    width: 350px;
+    min-height: 500px;
+    padding: 25px;
+    border-radius: 30px;
+    background-color: #ff9f1c;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    box-sizing: border-box;
+}
+
+.order-card form {
+    display: flex;
+    justify-content: center;
+}
+
+.pizza-card,
+.cart-item {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.card-title {
+    margin: 0 0 10px 0;
+    color: white;
     text-align: center;
 }
 
+.order-text {
+    color: white;
+    margin: 5px 0;
+    text-align: center;
+}
 
+.menu-price,
+.cart-total {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.custom-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.custom-form .field {
+    width: 80%;
+}
+
+.topping-grid {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.checkbox-label {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.small-button {
+    background-color: #2ec4b6;
+    color: white;
+    font-size: 14px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    margin-top: 10px;
+}
+
+.small-button:hover {
+    background-color: #cbf3f0;
+    color: black;
+}
+
+.danger-button {
+    background-color: #e76f51;
+}
+
+.danger-button:hover {
+    background-color: #f4a261;
+    color: black;
+}
+
+.points-info {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.receipt-container {
+    width: 450px;
+    height: auto;
+    min-height: 550px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.history-card {
+    width: 500px;
+    min-height: 550px;
+}
+
+.profile-container .pizza-card {
+    margin-top: 10px;
+}
+
+.custom-form .checkbox-label {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
